@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio V3 - Aura Bakat Audio-Reaktif</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* == CSS (Cascading Style Sheets) - AURA BAKAT == */
+        :root {
+            --bg-color: #0d0c1d;
+            --card-bg-color: rgba(20, 19, 38, 0.6);
+            --border-color: rgba(138, 43, 226, 0.2);
+            --primary-text: #f0f0f5;
+            --secondary-text: #a0a0c0;
+            --accent-color: #8A2BE2; /* BlueViolet */
+            --glow-color: rgba(138, 43, 226, 0.7);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .portfolio-section {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .portfolio-section h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--primary-text), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(138, 43, 226, 0.3);
+        }
+        
+        /* Pemutar Audio */
+        #audio-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            background: var(--card-bg-color);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        #audio-player button {
+            background: none;
+            border: none;
+            color: var(--secondary-text);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        #audio-player button:hover {
+            color: var(--accent-color);
+        }
+        
+        #song-name {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Gaya Tombol Filter tidak berubah */
+        .filter-buttons { margin-bottom: 3rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+        .filter-btn { background-color: transparent; color: var(--secondary-text); border: 1px solid var(--border-color); padding: 0.75rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+        .filter-btn:hover { color: var(--primary-text); background-color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 15px var(--glow-color); }
+        .filter-btn.active { color: #fff; background-color: var(--accent-color); border-color: var(--accent-color); box-shadow: 0 0 20px var(--glow-color); }
+
+        .interests-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .interest-card {
+            background: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease-out forwards;
+            transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        /* Efek Aura Saat Aktif */
+        .interest-card::after {
+            content: '';
+            position: absolute;
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 20px;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        .interest-card.active::after {
+            opacity: 1;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .interest-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 15px; background: radial-gradient(circle 250px at var(--mouse-x) var(--mouse-y), var(--glow-color), transparent); opacity: 0; transition: opacity 0.3s ease; }
+        .interest-card:hover::before { opacity: 1; }
+        .interest-card.hidden { transform: scale(0.5); opacity: 0; pointer-events: none; }
+        .card-content { transition: transform 0.2s ease-out; transform-style: preserve-3d; }
+        .card-icon { font-size: 3.5rem; color: var(--accent-color); margin-bottom: 1rem; text-shadow: 0 0 20px var(--glow-color); }
+        .card-title { font-size: 1.5rem; font-weight: 600; margin: 0; }
+        .card-details { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.5s ease-out; }
+        .card-details p { font-size: 0.95rem; line-height: 1.6; margin-top: 1rem; margin-bottom: 0; color: var(--secondary-text); }
+        .interest-card.active { box-shadow: 0 0 35px var(--glow-color); transform: scale(1.05); }
+        .interest-card.active .card-details { max-height: 300px; opacity: 1; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+
+    <section class="portfolio-section">
+        <h2>Minat & Bakat </h2>
+        <p>Sebuah konstelasi dari minat dan keahlian yang membentuk diri saya. Nyalakan musik dan jelajahi setiap bintang untuk menemukan cerita di baliknya.</p>
+        
+        <div class="interests-grid">
+            <div class="interest-card" data-category="teknis"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-code"></i></div><h3 class="card-title">Problem Solving</h3><div class="card-details"><p>Saya menikmati proses memecahkan masalah yang kompleks melalui kode. Mengubah logika menjadi aplikasi fungsional adalah gairah terbesar saya.</p></div></div></div>
+            <div class="interest-card" data-category="kreatif"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-palette"></i></div><h3 class="card-title">Desain Grafis</h3><div class="card-details"><p>Saya memiliki mata yang tajam untuk estetika visual. Saya suka bereksperimen dengan warna, tipografi, dan tata letak untuk menciptakan desain yang menarik.</p></div></div></div>
+            <div class="interest-card" data-category="sosial"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-microphone-lines"></i></div><h3 class="card-title">Public Speaking</h3><div class="card-details"><p>Berbicara di depan umum membantu saya menyusun ide secara terstruktur dan berkomunikasi dengan percaya diri, baik dalam presentasi maupun diskusi tim.</p></div></div></div>
+            <div class="interest-card" data-category="kreatif"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-camera-retro"></i></div><h3 class="card-title">Fotografi</h3><div class="card-details"><p>Melalui lensa kamera, saya belajar menangkap momen dan melihat dunia dari berbagai sudut pandang. Ini melatih saya untuk memperhatikan detail kecil.</p></div></div></div>
+            <div class="interest-card" data-category="teknis"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-chart-line"></i></div><h3 class="card-title">Analisis Data</h3><div class="card-details"><p>Saya tertarik untuk menemukan pola dan wawasan dari data. Mengubah angka mentah menjadi cerita yang bermakna adalah tantangan yang menyenangkan.</p></div></div></div>
+            <div class="interest-card" data-category="sosial"><div class="card-content"><div class="card-icon"><i class="fa-solid fa-users-gear"></i></div><h3 class="card-title">Kolaborasi Tim</h3><div class="card-details"><p>Saya percaya bahwa hasil terbaik lahir dari kerja sama tim. Saya proaktif dalam berdiskusi dan membangun sinergi untuk mencapai tujuan bersama.</p></div></div></div>
+        </div>
+    </section>
+    
+    <div id="audio-player">
+        <button id="prev-btn"><i class="fa-solid fa-backward-step"></i></button>
+        <button id="play-pause-btn"><i class="fa-solid fa-play"></i></button>
+        <button id="next-btn"><i class="fa-solid fa-forward-step"></i></button>
+        <span id="song-name">Pilih Lagu...</span>
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let audioContext, analyser, source, dataArray;
+        let stars = [];
+        const numStars = 250;
+
+        // --- Fitur Audio ---
+        const audioPlayer = document.getElementById('audio-player');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const songNameEl = document.getElementById('song-name');
+        
+        const playlist = [
+            { name: "Ambient Chill", url: "https://assets.mixkit.co/music/preview/mixkit-a-very-happy-christmas-897.mp3" },
+            { name: "Synthwave", url: "https://assets.mixkit.co/music/preview/mixkit-driving-ambition-32.mp3" },
+            { name: "Lofi Study", url: "https://assets.mixkit.co/music/preview/mixkit-hazy-after-hours-132.mp3" }
+        ];
+        let currentTrackIndex = 0;
+        const audio = new Audio();
+        audio.crossOrigin = "anonymous";
+
+        function setupAudio() {
+            if (audioContext) return;
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 256;
+            source = audioContext.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(audioContext.destination);
+            dataArray = new Uint8Array(analyser.frequencyBinCount);
+        }
+        
+        function loadTrack(index) {
+            audio.src = playlist[index].url;
+            songNameEl.textContent = playlist[index].name;
+        }
+        
+        playPauseBtn.addEventListener('click', () => {
+            if (!audioContext) setupAudio();
+            if (audio.paused) {
+                audio.play();
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            } else {
+                audio.pause();
+                playPauseBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
+            if (!audio.paused) audio.play();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrackIndex);
+            if (!audio.paused) audio.play();
+        });
+        
+        loadTrack(currentTrackIndex);
+
+        // --- Latar Belakang Audio-Reaktif ---
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5 + 0.5,
+                baseAlpha: Math.random() * 0.5 + 0.2,
+                alpha: 0,
+                speed: Math.random() * 0.3 + 0.1,
+                color: `hsl(${Math.random() * 360}, 100%, 75%)`
+            });
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let avg = 0;
+            if (analyser) {
+                analyser.getByteFrequencyData(dataArray);
+                avg = dataArray.reduce((a, b) => a + b) / dataArray.length;
+            }
+
+            stars.forEach(star => {
+                star.y -= star.speed;
+                if (star.y < 0) star.y = canvas.height;
+
+                const scale = avg / 128; // Skala bass/volume
+                const radius = star.radius * (1 + scale * 1.5);
+                star.alpha = star.baseAlpha + (scale * 0.5);
+
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, radius, 0, Math.PI * 2);
+                
+                // Ubah warna berdasarkan volume
+                const hue = (Date.now() / 50 + avg) % 360;
+                ctx.fillStyle = `hsla(${hue}, 100%, 75%, ${star.alpha})`;
+                
+                ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+        drawStars();
+        
+        // --- Fitur Kartu (tidak berubah) ---
+        const cards = document.querySelectorAll('.interest-card');
+        const filterButtons = document.querySelectorAll('.filter-btn');
+
+        cards.forEach((card, index) => {
+            card.style.animationDelay = `${index * 100}ms`;
+        });
+
+        cards.forEach(card => {
+            const cardContent = card.querySelector('.card-content');
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 12;
+                const rotateY = (centerX - x) / 12;
+                cardContent.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                cardContent.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+            card.addEventListener('click', () => {
+                const isActive = card.classList.contains('active');
+                cards.forEach(otherCard => otherCard.classList.remove('active'));
+                if (!isActive) card.classList.add('active');
+            });
+        });
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                const filter = button.dataset.filter;
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    });
+    </script>
+</body>
+</html>

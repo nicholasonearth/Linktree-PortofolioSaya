@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Portfolio | [Nama Anda]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- TEMA & VARIABEL WARNA --- */
+        :root {
+            --primary-color: #00CFE8;
+            /* Cyan Cerah */
+            --secondary-color: #172A45;
+            /* Navy Tua */
+            --background-light: #F5F7FA;
+            --text-light: #2D3748;
+            --card-light: #FFFFFF;
+
+            --background-dark: #0A192F;
+            --text-dark: #CCD6F6;
+            --card-dark: #112240;
+
+            --font-main: 'Space Grotesk', sans-serif;
+            --shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        /* --- MODE GELAP (DARK MODE) --- */
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        /* --- Reset & Gaya Dasar --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-light);
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* --- Kursor Kustom (Custom Cursor) --- */
+        .cursor-dot,
+        .cursor-outline {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            opacity: 0;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--primary-color);
+        }
+
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+        }
+
+        body:hover .cursor-dot,
+        body:hover .cursor-outline {
+            opacity: 1;
+        }
+
+        /* --- Header & Navigasi --- */
+        .main-header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            background: transparent;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode .header-scrolled {
+            background-color: rgba(10, 25, 47, 0.8);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 1rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Tombol Dark Mode --- */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            margin-left: 2rem;
+        }
+
+        .theme-switch {
+            display: inline-block;
+            height: 24px;
+            position: relative;
+            width: 50px;
+        }
+
+        .theme-switch input {
+            display: none;
+        }
+
+        .slider {
+            background-color: #ccc;
+            bottom: 0;
+            cursor: pointer;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: .4s;
+        }
+
+        .slider:before {
+            background-color: #fff;
+            bottom: 4px;
+            content: "";
+            height: 16px;
+            left: 4px;
+            position: absolute;
+            transition: .4s;
+            width: 16px;
+        }
+
+        input:checked+.slider {
+            background-color: var(--primary-color);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        /* --- Menu Mobile (Hamburger) --- */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: var(--primary-color);
+        }
+
+        /* --- Bagian Hero --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        #hero h2 {
+            font-size: clamp(40px, 8vw, 80px);
+            margin-bottom: 0.5rem;
+        }
+
+        #hero h3 {
+            font-size: clamp(40px, 8vw, 60px);
+            color: var(--text-secondary);
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        #hero p {
+            max-width: 500px;
+            margin-bottom: 3rem;
+        }
+
+        .typing-text {
+            color: var(--primary-color);
+            border-right: 2px solid;
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* --- Timeline Pengalaman --- */
+        .timeline {
+            position: relative;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--background-light);
+            border: 4px solid var(--primary-color);
+            top: 25px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        body.dark-mode .timeline-item::after {
+            background-color: var(--background-dark);
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background: var(--card-light);
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        body.dark-mode .timeline-content {
+            background: var(--card-dark);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+        }
+
+        .timeline-content span {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        /* --- Skill Bars --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .skill-bar {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-bar h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-bg {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+        }
+
+        body.dark-mode .bar-bg {
+            background-color: var(--secondary-color);
+        }
+
+        .bar-progress {
+            height: 100%;
+            width: 0;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* --- Kartu Proyek 3D --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        body.dark-mode .project-card {
+            background: var(--card-dark);
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .project-header i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-links a {
+            margin-left: 1rem;
+            color: inherit;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .project-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* --- Tombol "Back to Top" --- */
+        #to-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        /* --- Animasi Scroll --- */
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            transform: translateX(-50%);
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateX(0);
+        }
+
+        /* --- Responsif (Mobile) --- */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 5rem;
+                flex-direction: column;
+                background-color: var(--card-light);
+
+                body.dark-mode & {
+                    background-color: var(--card-dark);
+                }
+
+                width: 100%;
+                border-radius: 10px;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: var(--shadow);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                padding: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .timeline::after {
+                left: 15px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 10px;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 6px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cursor-dot,
+            .cursor-outline {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#" class="logo"></a>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                </ul>
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content hidden">
+                    <h1>Hai, nama saya</h1>
+                    <h2>Nicholas Devin Daniardi.</h2>
+                    <h3>Saya mahasiswa <span class="typing-text"></span></h3>
+                    <p style="margin-bottom: 0;">
+                        Saya asal Tangerang dan saya kuliah di Kota Semarang, saya dulu bersekolah di jurusan TJKT
+                    </p>
+                    <p style="margin-top: 0;">
+                        namun saya memiliki minat di dunia coding dan AI. Saat ini, saya fokus pada bagian Data Science.
+                    </p>
+                    <a href="minat.html" class="btn"
+                        style="background:var(--primary-color);color:#fff;padding:1rem 2rem;border-radius:5px;text-decoration:none;">Minat & Bakat
+                        Saya!</a>
+                </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Pengalaman & Pendidikan</h2>
+                <div class="timeline">
+                    <div class="timeline-item left hidden">
+                        <div class="timeline-content">
+                            <h3>Sekolah</h3>
+                            <span>SD YADIKA TANGERANG 3 2013-2018</span>
+                            <span>SMPN 24 TANGERANG 2019-2021<br></span>
+                            <span>SMK WS SEMARANG 2022-2024</span>
+                            <p>Prestasi :</p>
+                            <span>SMK : Magang di PT Telkom Akses,Siswa berprestasi</span>
+                        </div>
+                    </div>
+                    <div class="timeline-item right hidden">
+                        <div class="timeline-content">
+                            <h3>Perkuliahan</h3>
+                            <span>Unirvesitas Dian Nuswantoro<br> 2025-2029<br></span>
+                            <span>Fakultas Ilmu Komputer<br></span>
+                            <span>prodi Teknik Informatika</span>
+                            <h3>ORMAWA/UKM</h3>
+                            <span>Dinus Robotic Club,Dian Nuswantoro Computer Club,Basket UDINUS</span>
+
+                        </div>
+                    </div>
+                    <div class="timeline-item left hidden">
+                        <div class="timeline-content">
+                            <h3>Magang</h3>
+                            <span>PT Telkom Akses Simpang Lima <br>1 Januari 2024 - 5 mei 2024</span>
+                            <p>Memonitoring SDMS,Preventive Maintanance,Corective Maintanance dan Excel dasar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" style="background-color: var(--card-light);">
+            <body.dark-mode & { background-color: var(--card-dark); }>
+                <div class="container">
+                    <h2 class="section-title">Keahlian & Teknologi</h2>
+                    <div class="skills-grid">
+                        <div class="skill-bar hidden">
+                            <h4>HTML & CSS</h4>
+                            <div class="bar-bg">
+                                <div class="bar-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar hidden">
+                            <h4>Cisco Paket Tracer</h4>
+                            <div class="bar-bg">
+                                <div class="bar-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar hidden">
+                            <h4>Canva</h4>
+                            <div class="bar-bg">
+                                <div class="bar-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar hidden">
+                            <h4>Jaringan</h4>
+                            <div class="bar-bg">
+                                <div class="bar-progress" data-width="94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Proyek Saya</h2>
+                <div class="projects-grid">
+                    <div class="project-card hidden" data-tilt>
+                        <div class="project-header">
+                            <i class="far fa-folder"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/nicholasonearth/jkt48-hore.git" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>MOBILE APP JKT48</h3>
+                        <p>Saya membuat project pertama saya sebuah mobile app yang bertemakan JKT48 dengan code full HTML saja
+                            </p>
+                    </div>
+                    <div class="project-card hidden" data-tilt>
+                        <div class="project-header">
+                            <i class="far fa-folder"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/nicholasonearth/NOTA-DIGITAL-ALFAMART.git" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>STRUK DIGITAL</h3>
+                        <p>Saya membuat struk alfamart berbentuk digital
+                            </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button id="to-top-btn"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Kursor Kustom ---
+            const cursorDot = document.querySelector(".cursor-dot");
+            const cursorOutline = document.querySelector(".cursor-outline");
+            window.addEventListener("mousemove", function (e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                }, { duration: 500, fill: "forwards" });
+            });
+
+            // --- Efek Header Saat Scroll ---
+            const header = document.querySelector('.main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+
+            // --- Menu Mobile (Hamburger) ---
+            const hamburger = document.querySelector(".hamburger");
+            const navLinks = document.querySelector(".nav-links");
+            hamburger.addEventListener("click", () => {
+                hamburger.classList.toggle("active");
+                navLinks.classList.toggle("active");
+            });
+            document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
+                hamburger.classList.remove("active");
+                navLinks.classList.remove("active");
+            }));
+
+            // --- Toggle Dark Mode ---
+            const themeSwitch = document.querySelector('#checkbox');
+            themeSwitch.addEventListener('change', () => {
+                document.body.classList.toggle('dark-mode');
+                // Simpan preferensi tema
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            // Cek preferensi tema saat memuat halaman
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme) {
+                document.body.classList.add(currentTheme + '-mode');
+                if (currentTheme === 'dark') {
+                    themeSwitch.checked = true;
+                    document.body.classList.remove('light-mode');
+                }
+            }
+
+
+            // --- Animasi Scroll ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        // Animate skill bars
+                        if (entry.target.classList.contains('skill-bar')) {
+                            const progress = entry.target.querySelector('.bar-progress');
+                            progress.style.width = progress.getAttribute('data-width');
+                        }
+                    }
+                });
+            });
+            const hiddenElements = document.querySelectorAll('.hidden');
+            hiddenElements.forEach((el) => observer.observe(el));
+
+            // --- Efek Mengetik (Typing Effect) ---
+            const typingText = document.querySelector('.typing-text');
+            const words = ["UDINUS.", "FAKULTAS ILMU KOMPUTER", "PROGRAM STUDI TEKNIK INFORMATIKA"]; // Ganti dengan teks Anda
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                if (isDeleting) {
+                    typingText.textContent = currentWord.substring(0, charIndex--);
+                } else {
+                    typingText.textContent = currentWord.substring(0, charIndex++);
+                }
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    setTimeout(() => isDeleting = true, 2000);
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                }
+
+                const typeSpeed = isDeleting ? 100 : 200;
+                setTimeout(type, typeSpeed);
+            }
+            type();
+
+            // --- Efek 3D Tilt ---
+            const tiltElements = document.querySelectorAll("[data-tilt]");
+            tiltElements.forEach(el => {
+                el.addEventListener("mousemove", (e) => {
+                    const { left, top, width, height } = el.getBoundingClientRect();
+                    const x = (e.clientX - left) / width - 0.5;
+                    const y = (e.clientY - top) / height - 0.5;
+                    el.style.transform = `perspective(1000px) rotateY(${x * 20}deg) rotateX(${-y * 20}deg) scale3d(1.05, 1.05, 1.05)`;
+                });
+                el.addEventListener("mouseleave", () => {
+                    el.style.transform = "perspective(1000px) rotateY(0) rotateX(0) scale3d(1, 1, 1)";
+                });
+            });
+
+            // --- Tombol Back to Top ---
+            const toTopBtn = document.getElementById("to-top-btn");
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    toTopBtn.style.display = "flex";
+                } else {
+                    toTopBtn.style.display = "none";
+                }
+            };
+            toTopBtn.onclick = function () {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            };
+        });
+    </script>
+</body>
+
+</html>

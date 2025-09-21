@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Saya</title>
+    <style>
+        /* CSS Reset and Basic Styling */
+        :root {
+            --primary-color: #00aaff;
+            --secondary-color: #0a192f;
+            --text-color: #ccd6f6;
+            --light-gray: #8892b0;
+            --bg-light: #112240;
+            --font-main: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: top 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; /* Account for fixed header */
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            height: 2.2rem; /* Give space for typing animation */
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* About Section */
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--light-gray);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--light-gray);
+            margin-bottom: 15px;
+        }
+
+        .project-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        
+        .project-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        #contact .container {
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        #contact p {
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--bg-light);
+            color: var(--light-gray);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            #hero {
+                text-align: center;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="container navbar">
+            <a href="#hero" class="logo">NamaAnda</a>
+            <ul class="nav-links">
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Halo, nama saya</h1>
+                    <h2>Nama Lengkap Anda.</h2>
+                    <p class="subtitle" id="subtitle"></p>
+                    <a href="mailto:emailanda@example.com" class="btn">Hubungi Saya</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p>
+                    Saya adalah seorang pengembang web dengan semangat untuk menciptakan aplikasi web yang bersih, efisien, dan ramah pengguna. Dengan pengalaman di bidang front-end dan back-end, saya menikmati setiap aspek dalam proses pengembangan, mulai dari konsep hingga penerapan.
+                </p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">Proyek Saya</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        
+                        <div class="project-info">
+                            <h3>Nama Proyek 1</h3>
+                            <p>Deskripsi singkat tentang proyek ini. Teknologi yang digunakan: HTML, CSS, JavaScript.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">Kode</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        
+                        <div class="project-info">
+                            <h3>Nama Proyek 2</h3>
+                            <p>Deskripsi singkat tentang proyek ini. Teknologi yang digunakan: React, Node.js.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">Kode</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        
+                        <div class="project-info">
+                            <h3>Nama Proyek 3</h3>
+                            <p>Deskripsi singkat tentang proyek ini. Teknologi yang digunakan: Vue, Firebase.</p>
+                            <div class="project-links">
+                                <a href="#" target="_blank">Live Demo</a>
+                                <a href="#" target="_blank">Kode</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p>
+                    Saya selalu terbuka untuk diskusi lebih lanjut atau peluang kolaborasi. Jangan ragu untuk menghubungi saya melalui email.
+                </p>
+                <a href="mailto:emailanda@example.com" class="btn">Kirim Email</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Nama Anda. Dibuat dengan ❤️.</p>
+    </footer>
+
+    <script>
+        // JavaScript untuk efek mengetik pada subtitle
+        const roles = ["Web Developer", "UI/UX Enthusiast", "Problem Solver"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        const subtitleElement = document.getElementById('subtitle');
+        const typingSpeed = 150;
+        const erasingSpeed = 100;
+        const delayBetweenRoles = 2000;
+
+        function type() {
+            if (charIndex < roles[roleIndex].length) {
+                subtitleElement.textContent += roles[roleIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingSpeed);
+            } else {
+                setTimeout(erase, delayBetweenRoles);
+            }
+        }
+
+        function erase() {
+            if (charIndex > 0) {
+                subtitleElement.textContent = roles[roleIndex].substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(erase, erasingSpeed);
+            } else {
+                roleIndex = (roleIndex + 1) % roles.length;
+                setTimeout(type, typingSpeed + 500);
+            }
+        }
+        
+        document.addEventListener("DOMContentLoaded", function() {
+           setTimeout(type, 1000); // Mulai animasi setelah halaman dimuat
+        });
+
+        // JavaScript untuk menyembunyikan header saat scroll ke bawah
+        let lastScrollTop = 0;
+        const header = document.querySelector('.header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop) {
+                // Scroll ke bawah
+                header.style.top = '-80px';
+            } else {
+                // Scroll ke atas
+                header.style.top = '0';
+            }
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>
