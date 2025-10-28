@@ -1,9 +1,6 @@
-/* --- TEMA & VARIABEL WARNA --- */
 :root {
     --primary-color: #00CFE8;
-    /* Cyan Cerah */
     --secondary-color: #172A45;
-    /* Navy Tua */
     --background-light: #F5F7FA;
     --text-light: #2D3748;
     --card-light: #FFFFFF;
@@ -17,13 +14,11 @@
     --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-/* --- MODE GELAP (DARK MODE) --- */
 body.dark-mode {
     background-color: var(--background-dark);
     color: var(--text-dark);
 }
 
-/* --- Reset & Gaya Dasar --- */
 * {
     margin: 0;
     padding: 0;
@@ -41,10 +36,9 @@ body {
     transition: var(--transition);
 }
 
-/* --- Custom Scrollbar --- */
 ::-webkit-scrollbar {
     width: 8px;
-    height: 8px; /* Ditambahkan untuk scrollbar horizontal */
+    height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -75,7 +69,6 @@ section {
     color: var(--primary-color);
 }
 
-/* --- Kursor Kustom (Custom Cursor) --- */
 .cursor-dot,
 .cursor-outline {
     pointer-events: none;
@@ -105,7 +98,6 @@ body:hover .cursor-outline {
     opacity: 1;
 }
 
-/* --- Preloader --- */
 #preloader {
     position: fixed;
     top: 0;
@@ -146,7 +138,6 @@ body.dark-mode #preloader {
     pointer-events: none;
 }
 
-/* --- Header & Navigasi --- */
 .main-header {
     position: fixed;
     width: 100%;
@@ -205,7 +196,6 @@ body.dark-mode .header-scrolled {
     color: var(--primary-color);
 }
 
-/* --- Tombol Dark Mode --- */
 .theme-switch-wrapper {
     display: flex;
     align-items: center;
@@ -261,7 +251,6 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-/* --- Menu Mobile (Hamburger) --- */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -276,7 +265,6 @@ input:checked+.slider:before {
     background-color: var(--primary-color);
 }
 
-/* --- Bagian Hero --- */
 #hero {
     min-height: 100vh;
     display: flex;
@@ -319,7 +307,6 @@ input:checked+.slider:before {
     }
 }
 
-/* --- Styling Tombol --- */
 .btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -354,7 +341,6 @@ input:checked+.slider:before {
     color: #fff;
 }
 
-/* --- Timeline Pengalaman --- */
 .timeline {
     position: relative;
     max-width: 750px;
@@ -427,7 +413,6 @@ body.dark-mode .timeline-content {
     opacity: 0.7;
 }
 
-/* --- PERBAIKAN: Styling Bagian Skills (Dipindahkan dari inline) --- */
 #skills {
     background-color: var(--card-light);
 }
@@ -436,7 +421,6 @@ body.dark-mode #skills {
     background-color: var(--card-dark);
 }
 
-/* --- Skill Bars --- */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -469,17 +453,14 @@ body.dark-mode .bar-bg {
     transition: width 1.5s ease-in-out;
 }
 
-/* --- Kartu Proyek 3D (Scroll Horizontal) --- */
 .projects-grid {
-    display: flex;         /* Diubah dari 'grid' ke 'flex' */
-    flex-wrap: nowrap;       /* Mencegah kartu turun ke baris baru */
-    overflow-x: auto;      /* KUNCI: Menambahkan scroll horizontal */
-    overflow-y: hidden;    /* Menyembunyikan scroll vertikal */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
     
-    /* Beri padding agar scrollbar tidak menimpa bayangan kartu */
     padding: 20px 4px 24px 4px; 
     
-    /* Mengganti 'gap' dari grid */
     gap: 0; 
 }
 
@@ -491,10 +472,9 @@ body.dark-mode .bar-bg {
     transition: var(--transition);
     transform-style: preserve-3d;
 
-    /* --- Tambahan untuk Scroll Horizontal --- */
-    flex-shrink: 0;      /* Mencegah kartu 'gepeng' atau menyusut */
-    width: 300px;        /* Atur lebar kartu agar konsisten */
-    margin-right: 20px;  /* Mengganti 'gap' dengan 'margin' untuk jarak */
+    flex-shrink: 0;
+    width: 300px;
+    margin-right: 20px;
 }
 
 .project-card:last-child {
@@ -507,17 +487,15 @@ body.dark-mode .project-card {
 
 .project-card:hover {
     transform: scale(1.05);
-    /* Dibiarkan, tapi efek JS 'data-tilt' akan menimpa ini saat hover */
 }
 
-/* Gaya untuk Gambar Proyek */
 .project-image {
-    width: 100%;             /* Gambar mengisi lebar kartu */
-    height: 180px;           /* Tinggi tetap untuk konsistensi */
-    object-fit: cover;       /* Memastikan gambar menutupi area tanpa terdistorsi */
-    border-radius: 8px;      /* Sudut sedikit membulat */
-    margin-bottom: 1.5rem;   /* Jarak antara gambar dan teks/ikon */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sedikit bayangan */
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .project-card .project-header {
@@ -547,7 +525,6 @@ body.dark-mode .project-card {
     margin-bottom: 1rem;
 }
 
-/* --- Penanda Teknologi Proyek --- */
 .project-tech {
     margin-top: 1.5rem;
     display: flex;
@@ -569,9 +546,7 @@ body.dark-mode .project-tech span {
     color: var(--primary-color);
 }
 
-/* --- Styling Bagian Kontak --- */
 #contact {
-    /* Background diatur agar selang-seling dengan section lain */
 }
 
 #contact-form {
@@ -633,7 +608,6 @@ body.dark-mode .form-group textarea:focus {
 }
 
 
-/* --- Tombol "Back to Top" --- */
 #to-top-btn {
     position: fixed;
     bottom: 20px;
@@ -657,7 +631,6 @@ body.dark-mode .form-group textarea:focus {
     transform: scale(1.1);
 }
 
-/* --- Animasi Scroll Dinamis --- */
 .hidden {
     opacity: 0;
     filter: blur(5px);
@@ -668,7 +641,6 @@ body.dark-mode .form-group textarea:focus {
 .skill-bar.hidden,
 .section-title.hidden,
 #contact-form.hidden {
-    /* Tambahkan form ke animasi */
     transform: translateY(30px);
 }
 
@@ -690,7 +662,6 @@ body.dark-mode .form-group textarea:focus {
     transform: none;
 }
 
-/* --- Styling Footer --- */
 .main-footer {
     padding: 3rem 0;
     background-color: var(--card-dark);
@@ -700,7 +671,6 @@ body.dark-mode .form-group textarea:focus {
 
 body.dark-mode .main-footer {
     background-color: #061223;
-    /* Sedikit lebih gelap dari background dark */
 }
 
 .social-links {
@@ -713,7 +683,6 @@ body.dark-mode .main-footer {
     margin: 0 0.75rem;
     transition: var(--transition);
     display: inline-block;
-    /* Agar transform bisa bekerja */
 }
 
 .social-links a:hover {
@@ -727,7 +696,6 @@ body.dark-mode .main-footer {
 }
 
 
-/* --- Responsif (Mobile) --- */
 @media screen and (max-width: 768px) {
     .nav-links {
         position: fixed;
@@ -811,7 +779,6 @@ body.dark-mode .main-footer {
         margin-left: auto;
     }
 
-    /* Responsive Form */
     .form-group {
         flex-direction: column;
     }
@@ -820,8 +787,7 @@ body.dark-mode .main-footer {
         width: 100%;
     }
     
-    /* Atur lebar kartu proyek di mobile */
     .project-card {
-        width: 280px; /* Sedikit lebih kecil agar pas di layar mobile */
+        width: 280px;
     }
 }

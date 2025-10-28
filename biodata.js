@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // --- BARU: Logika Preloader ---
     const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
         preloader.classList.add('hidden');
     });
 
-    // --- Kursor Kustom ---
     const cursorDot = document.querySelector(".cursor-dot");
     const cursorOutline = document.querySelector(".cursor-outline");
     window.addEventListener("mousemove", function (e) {
@@ -19,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, { duration: 500, fill: "forwards" });
     });
 
-    // --- Efek Header Saat Scroll ---
     const header = document.querySelector('.main-header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // --- Menu Mobile (Hamburger) ---
     const hamburger = document.querySelector(".hamburger");
     const navLinks = document.querySelector(".nav-links");
     hamburger.addEventListener("click", () => {
@@ -41,18 +37,15 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.remove("active");
     }));
 
-    // --- Toggle Dark Mode ---
     const themeSwitch = document.querySelector('#checkbox');
     themeSwitch.addEventListener('change', () => {
         document.body.classList.toggle('dark-mode');
-        // Simpan preferensi tema
         if (document.body.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
         } else {
             localStorage.setItem('theme', 'light');
         }
     });
-    // Cek preferensi tema saat memuat halaman
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
         document.body.classList.add(currentTheme + '-mode');
@@ -62,12 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // --- Animasi Scroll ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('show');
-                // Animate skill bars
                 if (entry.target.classList.contains('skill-bar')) {
                     const progress = entry.target.querySelector('.bar-progress');
                     progress.style.width = progress.getAttribute('data-width');
@@ -75,14 +66,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }, { 
-        threshold: 0.1 // Sedikit lebih cepat memicu animasi
+        threshold: 0.1
     });
     const hiddenElements = document.querySelectorAll('.hidden');
     hiddenElements.forEach((el) => observer.observe(el));
 
-    // --- Efek Mengetik (Typing Effect) ---
     const typingText = document.querySelector('.typing-text');
-    const words = ["UDINUS.", "FAKULTAS ILMU KOMPUTER", "PROGRAM STUDI TEKNIK INFORMATIKA"]; // Ganti dengan teks Anda
+    const words = ["UDINUS.", "FAKULTAS ILMU KOMPUTER", "PROGRAM STUDI TEKNIK INFORMATIKA"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -105,12 +95,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const typeSpeed = isDeleting ? 100 : 200;
         setTimeout(type, typeSpeed);
     }
-    // Panggil fungsi type() hanya jika elemen .typing-text ada
     if (typingText) {
         type();
     }
 
-    // --- Efek 3D Tilt ---
     const tiltElements = document.querySelectorAll("[data-tilt]");
     tiltElements.forEach(el => {
         el.addEventListener("mousemove", (e) => {
@@ -124,7 +112,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- Tombol Back to Top ---
     const toTopBtn = document.getElementById("to-top-btn");
     window.onscroll = function () {
         if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -138,17 +125,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.documentElement.scrollTop = 0;
     };
 
-    // --- BARU: Navigasi Aktif (Scroll Spy) ---
     const sections = document.querySelectorAll('section[id]');
     const navLi = document.querySelectorAll('.nav-links li a');
 
     function activateMenu() {
-        let current = 'hero'; // Default ke hero
+        let current = 'hero';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            // Ambil header height untuk offset yang lebih akurat
-            const headerHeight = header ? header.offsetHeight : 50; // default 50px jika header null
-            if (pageYOffset >= (sectionTop - headerHeight - 100)) { // buffer 100px
+            const headerHeight = header ? header.offsetHeight : 50;
+            if (pageYOffset >= (sectionTop - headerHeight - 100)) {
                 current = section.getAttribute('id');
             }
         });
@@ -160,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    // Panggil di 'scroll' dan 'load'
     window.addEventListener('scroll', activateMenu);
     window.addEventListener('load', activateMenu);
 });

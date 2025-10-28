@@ -1,8 +1,3 @@
-/* ================== */
-/* BAGIAN CSS */
-/* ================== */
-
-/* Pengaturan Dasar */
 * {
     margin: 0;
     padding: 0;
@@ -16,20 +11,17 @@ body {
     align-items: center;
     min-height: 100vh;
     color: #fff;
-    /* Latar Belakang Gradien Animasi */
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
 }
 
-/* Animasi untuk Gradien */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Wadah Utama dengan Efek Glassmorphism */
 .container {
     width: 90%;
     max-width: 400px;
@@ -41,10 +33,9 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     text-align: center;
-    transform-style: preserve-3d; /* Diperlukan untuk efek tilt.js */
+    transform-style: preserve-3d;
 }
 
-/* Bagian Profil */
 header {
     margin-bottom: 30px;
 }
@@ -70,7 +61,6 @@ header p {
     opacity: 0.9;
 }
 
-/* Bagian Tombol Link */
 .links {
     display: flex;
     flex-direction: column;
@@ -101,7 +91,6 @@ header p {
     font-size: 1.2em;
 }
 
-/* Bagian Ikon Sosial Media */
 footer {
     margin-top: 30px;
 }
@@ -115,6 +104,6 @@ footer {
 }
 
 .socials a:hover {
-    color: #e73c7e; /* Warna aksen saat di-hover */
+    color: #e73c7e;
     transform: scale(1.2);
 }
