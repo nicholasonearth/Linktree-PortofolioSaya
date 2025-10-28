@@ -1,0 +1,827 @@
+/* --- TEMA & VARIABEL WARNA --- */
+:root {
+    --primary-color: #00CFE8;
+    /* Cyan Cerah */
+    --secondary-color: #172A45;
+    /* Navy Tua */
+    --background-light: #F5F7FA;
+    --text-light: #2D3748;
+    --card-light: #FFFFFF;
+
+    --background-dark: #0A192F;
+    --text-dark: #CCD6F6;
+    --card-dark: #112240;
+
+    --font-main: 'Space Grotesk', sans-serif;
+    --shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* --- MODE GELAP (DARK MODE) --- */
+body.dark-mode {
+    background-color: var(--background-dark);
+    color: var(--text-dark);
+}
+
+/* --- Reset & Gaya Dasar --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-light);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* Ditambahkan untuk scrollbar horizontal */
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- Kursor Kustom (Custom Cursor) --- */
+.cursor-dot,
+.cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 0;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+}
+
+.cursor-outline {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+}
+
+body:hover .cursor-dot,
+body:hover .cursor-outline {
+    opacity: 1;
+}
+
+/* --- Preloader --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--background-light);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+    visibility: visible;
+}
+
+body.dark-mode #preloader {
+    background: var(--background-dark);
+}
+
+#preloader .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color);
+    border-top-color: var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* --- Header & Navigasi --- */
+.main-header {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem 0;
+    background: transparent;
+    transition: var(--transition);
+}
+
+.header-scrolled {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .header-scrolled {
+    background-color: rgba(10, 25, 47, 0.8);
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 1rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary-color);
+}
+
+/* --- Tombol Dark Mode --- */
+.theme-switch-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.theme-switch {
+    display: inline-block;
+    height: 24px;
+    position: relative;
+    width: 50px;
+}
+
+.theme-switch input {
+    display: none;
+}
+
+.slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+}
+
+.slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 16px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 16px;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* --- Menu Mobile (Hamburger) --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--primary-color);
+}
+
+/* --- Bagian Hero --- */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+#hero h1 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+#hero h2 {
+    font-size: clamp(40px, 8vw, 80px);
+    margin-bottom: 0.5rem;
+}
+
+#hero h3 {
+    font-size: clamp(40px, 8vw, 60px);
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin-bottom: 2rem;
+}
+
+#hero p {
+    max-width: 500px;
+    margin-bottom: 3rem;
+}
+
+.typing-text {
+    color: var(--primary-color);
+    border-right: 2px solid;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* --- Styling Tombol --- */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--primary-color);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-left: 1rem;
+}
+
+.btn-outline:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+/* --- Timeline Pengalaman --- */
+.timeline {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    right: -10px;
+    background-color: var(--background-light);
+    border: 4px solid var(--primary-color);
+    top: 25px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+body.dark-mode .timeline-item::after {
+    background-color: var(--background-dark);
+}
+
+.timeline-item.left {
+    left: 0;
+}
+
+.timeline-item.right {
+    left: 50%;
+}
+
+.timeline-item.right::after {
+    left: -10px;
+}
+
+.timeline-content {
+    padding: 20px 30px;
+    background: var(--card-light);
+    border-radius: 6px;
+    box-shadow: var(--shadow);
+}
+
+body.dark-mode .timeline-content {
+    background: var(--card-dark);
+}
+
+.timeline-content h3 {
+    color: var(--primary-color);
+}
+
+.timeline-content span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* --- PERBAIKAN: Styling Bagian Skills (Dipindahkan dari inline) --- */
+#skills {
+    background-color: var(--card-light);
+}
+
+body.dark-mode #skills {
+    background-color: var(--card-dark);
+}
+
+/* --- Skill Bars --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.skill-bar {
+    margin-bottom: 1.5rem;
+}
+
+.skill-bar h4 {
+    margin-bottom: 0.5rem;
+}
+
+.bar-bg {
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+body.dark-mode .bar-bg {
+    background-color: var(--secondary-color);
+}
+
+.bar-progress {
+    height: 100%;
+    width: 0;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out;
+}
+
+/* --- Kartu Proyek 3D (Scroll Horizontal) --- */
+.projects-grid {
+    display: flex;         /* Diubah dari 'grid' ke 'flex' */
+    flex-wrap: nowrap;       /* Mencegah kartu turun ke baris baru */
+    overflow-x: auto;      /* KUNCI: Menambahkan scroll horizontal */
+    overflow-y: hidden;    /* Menyembunyikan scroll vertikal */
+    
+    /* Beri padding agar scrollbar tidak menimpa bayangan kartu */
+    padding: 20px 4px 24px 4px; 
+    
+    /* Mengganti 'gap' dari grid */
+    gap: 0; 
+}
+
+.project-card {
+    background: var(--card-light);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    transform-style: preserve-3d;
+
+    /* --- Tambahan untuk Scroll Horizontal --- */
+    flex-shrink: 0;      /* Mencegah kartu 'gepeng' atau menyusut */
+    width: 300px;        /* Atur lebar kartu agar konsisten */
+    margin-right: 20px;  /* Mengganti 'gap' dengan 'margin' untuk jarak */
+}
+
+.project-card:last-child {
+    margin-right: 0;
+}
+
+body.dark-mode .project-card {
+    background: var(--card-dark);
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+    /* Dibiarkan, tapi efek JS 'data-tilt' akan menimpa ini saat hover */
+}
+
+/* Gaya untuk Gambar Proyek */
+.project-image {
+    width: 100%;             /* Gambar mengisi lebar kartu */
+    height: 180px;           /* Tinggi tetap untuk konsistensi */
+    object-fit: cover;       /* Memastikan gambar menutupi area tanpa terdistorsi */
+    border-radius: 8px;      /* Sudut sedikit membulat */
+    margin-bottom: 1.5rem;   /* Jarak antara gambar dan teks/ikon */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sedikit bayangan */
+}
+
+.project-card .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.project-header i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.project-links a {
+    margin-left: 1rem;
+    color: inherit;
+    font-size: 1.5rem;
+    transition: var(--transition);
+}
+
+.project-links a:hover {
+    color: var(--primary-color);
+}
+
+.project-card h3 {
+    margin-bottom: 1rem;
+}
+
+/* --- Penanda Teknologi Proyek --- */
+.project-tech {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-tech span {
+    background-color: rgba(0, 207, 232, 0.1);
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+}
+
+body.dark-mode .project-tech span {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+/* --- Styling Bagian Kontak --- */
+#contact {
+    /* Background diatur agar selang-seling dengan section lain */
+}
+
+#contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 5px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    background: var(--card-light);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+body.dark-mode .form-group input,
+body.dark-mode .form-group textarea {
+    background: var(--card-dark);
+    color: var(--text-dark);
+    border-color: var(--secondary-color);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background-color: #fff;
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus {
+    background-color: var(--background-dark);
+}
+
+#contact-form .btn {
+    width: auto;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.form-note {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+
+/* --- Tombol "Back to Top" --- */
+#to-top-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: var(--transition);
+}
+
+#to-top-btn:hover {
+    transform: scale(1.1);
+}
+
+/* --- Animasi Scroll Dinamis --- */
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.hero-content.hidden,
+.skill-bar.hidden,
+.section-title.hidden,
+#contact-form.hidden {
+    /* Tambahkan form ke animasi */
+    transform: translateY(30px);
+}
+
+.timeline-item.left.hidden {
+    transform: translateX(-50px);
+}
+
+.timeline-item.right.hidden {
+    transform: translateX(50px);
+}
+
+.project-card.hidden {
+    transform: scale(0.9);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+}
+
+/* --- Styling Footer --- */
+.main-footer {
+    padding: 3rem 0;
+    background-color: var(--card-dark);
+    color: var(--text-dark);
+    text-align: center;
+}
+
+body.dark-mode .main-footer {
+    background-color: #061223;
+    /* Sedikit lebih gelap dari background dark */
+}
+
+.social-links {
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: var(--text-dark);
+    font-size: 1.75rem;
+    margin: 0 0.75rem;
+    transition: var(--transition);
+    display: inline-block;
+    /* Agar transform bisa bekerja */
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.main-footer p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+
+/* --- Responsif (Mobile) --- */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: var(--card-light);
+
+        body.dark-mode & {
+            background-color: var(--card-dark);
+        }
+
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .timeline::after {
+        left: 15px;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 10px;
+    }
+
+    .timeline-item.right {
+        left: 0;
+    }
+
+    .timeline-item::after {
+        left: 6px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+
+    .btn {
+        display: block;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .btn-outline {
+        margin-left: auto;
+    }
+
+    /* Responsive Form */
+    .form-group {
+        flex-direction: column;
+    }
+
+    #contact-form .btn {
+        width: 100%;
+    }
+    
+    /* Atur lebar kartu proyek di mobile */
+    .project-card {
+        width: 280px; /* Sedikit lebih kecil agar pas di layar mobile */
+    }
+}

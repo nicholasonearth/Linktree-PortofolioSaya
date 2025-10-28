@@ -1,0 +1,120 @@
+/* ================== */
+/* BAGIAN CSS */
+/* ================== */
+
+/* Pengaturan Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #fff;
+    /* Latar Belakang Gradien Animasi */
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+/* Animasi untuk Gradien */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Wadah Utama dengan Efek Glassmorphism */
+.container {
+    width: 90%;
+    max-width: 400px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    text-align: center;
+    transform-style: preserve-3d; /* Diperlukan untuk efek tilt.js */
+}
+
+/* Bagian Profil */
+header {
+    margin-bottom: 30px;
+}
+
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 1em;
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* Bagian Tombol Link */
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.link:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.link .icon {
+    margin-right: 12px;
+    font-size: 1.2em;
+}
+
+/* Bagian Ikon Sosial Media */
+footer {
+    margin-top: 30px;
+}
+
+.socials a {
+    color: #fff;
+    font-size: 1.8em;
+    margin: 0 15px;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socials a:hover {
+    color: #e73c7e; /* Warna aksen saat di-hover */
+    transform: scale(1.2);
+}
