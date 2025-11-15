@@ -37,23 +37,40 @@ document.addEventListener('DOMContentLoaded', function () {
         navLinks.classList.remove("active");
     }));
 
-    const themeSwitch = document.querySelector('#checkbox');
-    themeSwitch.addEventListener('change', () => {
-        document.body.classList.toggle('dark-mode');
-        if (document.body.classList.contains('dark-mode')) {
+
+    const themeSwitchDesktop = document.getElementById('checkbox-desktop');
+    const themeSwitchMobile = document.getElementById('checkbox-mobile');
+    const switches = [themeSwitchDesktop, themeSwitchMobile].filter(s => s); 
+
+    /**
+     * @param {boolean} isDarkMode 
+     */
+    function updateTheme(isDarkMode) {
+        if (isDarkMode) {
+            document.body.classList.add('dark-mode');
+            document.body.classList.remove('light-mode');
             localStorage.setItem('theme', 'dark');
         } else {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
             localStorage.setItem('theme', 'light');
         }
+        switches.forEach(s => s.checked = isDarkMode);
+    }
+
+    switches.forEach(themeSwitch => {
+        themeSwitch.addEventListener('change', () => {
+            const isDarkMode = themeSwitch.checked;
+            updateTheme(isDarkMode);
+        });
     });
+
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme) {
-        document.body.classList.add(currentTheme + '-mode');
-        if (currentTheme === 'dark') {
-            themeSwitch.checked = true;
-            document.body.classList.remove('light-mode');
-        }
+        const isDarkMode = currentTheme === 'dark';
+        updateTheme(isDarkMode);
     }
+
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -153,7 +170,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const captionText = document.getElementById("caption");
 
     /**
-
      * @param {string} imgSrc 
      * @param {string} caption 
      */
