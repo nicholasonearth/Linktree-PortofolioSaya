@@ -33,6 +33,7 @@
                     <li><a href="#skills">Keahlian</a></li>
                     <li><a href="#projects">Proyek</a></li>
                     <li><a href="#contact">Kontak</a></li>
+                    <li><a href="#certificates">Sertifikat</a></li>
                 </ul>
                 <div class="theme-switch-wrapper">
                     <label class="theme-switch" for="checkbox">
@@ -94,9 +95,11 @@
                     </div>
                     <div class="timeline-item left hidden">
                         <div class="timeline-content">
-                            <h3>Magang</h3>
-                            <span>PT Telkom Akses Simpang Lima <br>1 Januari 2024 - 5 mei 2024</span>
+                            <h3>Pengalaman</h3>
+                            <span>PT Telkom Akses Simpang Lima <br>1-01-2024 - 5-05-2024</span>
                             <p>Memonitoring SDMS,Preventive Maintanance,Corective Maintanance dan Excel dasar.</p>
+                            <span>BTNG 2025<br>26-09-2025 - 1-10-2025</span>
+                            <p>Divisi Data Analisis</p>
                         </div>
                     </div>
                 </div>
@@ -135,121 +138,169 @@
             </div>
         </section>
 
+
         <section id="projects">
-    <div class="container">
-        <h2 class="section-title hidden">Proyek Saya</h2>
-        <div class="projects-grid">
+            <div class="container">
+                <h2 class="section-title hidden">Proyek Saya</h2>
+                <div class="projects-grid">
 
-            <div class="project-card hidden" data-tilt>
-                <img src="jkt48.png" alt="Screenshot Mobile App JKT48" class="project-image">
-                
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="https://github.com/nicholasonearth/jkt48-hore.git" target="_blank"><i
-                                class="fab fa-github"></i></a>
+                    <div class="project-card hidden" data-tilt>
+                        <img src="jkt48.png" alt="Screenshot Mobile App JKT48" class="project-image"
+                            onclick="openModal('jkt48.png', 'MOBILE APP JKT48')">
+
+                        <div class="project-header">
+                            <i class="far fa-folder"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/nicholasonearth/jkt48-hore.git" target="_blank"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>MOBILE APP JKT48</h3>
+                        <p>Saya membuat project pertama saya sebuah mobile app yang bertemakan JKT48 dengan code full
+                            HTML saja
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                        </div>
                     </div>
-                </div>
-                <h3>MOBILE APP JKT48</h3>
-                <p>Saya membuat project pertama saya sebuah mobile app yang bertemakan JKT48 dengan code full
-                    HTML saja
-                </p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                </div>
-            </div>
 
-            <div class="project-card hidden" data-tilt>
-                <img src="struk.png" alt="Screenshot Struk Digital Alfamart" class="project-image">
+                    <div class="project-card hidden" data-tilt>
+                        <img src="struk.png" alt="Screenshot Struk Digital Alfamart" class="project-image"
+                            onclick="openModal('struk.png', 'STRUK DIGITAL ALFAMART')">
 
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="https://github.com/nicholasonearth/NOTA-DIGITAL-ALFAMART.git"
-                            target="_blank"><i class="fab fa-github"></i></a>
+                        <div class="project-header">
+                            <i class="far fa-folder"></i>
+                            <div class="project-links">
+                                <a href="https://github.com/nicholasonearth/NOTA-DIGITAL-ALFAMART.git"
+                                    target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                        <h3>STRUK DIGITAL</h3>
+                        <p>Saya membuat struk alfamart berbentuk digital
+                        </p>
+                        <div class="project-tech">
+                            <span>HTML</span>
+                        </div>
                     </div>
-                </div>
-                <h3>STRUK DIGITAL</h3>
-                <p>Saya membuat struk alfamart berbentuk digital
-                </p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                </div>
-            </div>
 
-            <div class="project-card hidden" data-tilt>
-                <img src="gambar_manajemen_stok.jpg" alt="Screenshot Aplikasi Manajemen Stok" class="project-image">
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <div class="project-card hidden" data-tilt>
+                        <img src="data.png" alt="Screenshot Aplikasi Manajemen Stok" class="project-image"
+                            onclick="openModal('data.png', 'MACHINE LEARNING: KASUS STUNTING')">
+                        <div class="project-header">
+                            <i class="far fa-folder"></i>
+                            <div class="project-links">
+                                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                            </div>
                         </div>
-                </div>
-                <h3>Aplikasi Manajemen Stok Sederhana</h3>
-                <p>Aplikasi berbasis web untuk mengelola inventaris barang dengan fitur tambah, edit, dan hapus.</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Flask</span>
-                    <span>SQLite</span>
-                </div>
-            </div>
-
-            <div class="project-card hidden" data-tilt>
-                <img src="gambar_sentimen_twitter.jpg" alt="Screenshot Analisis Sentimen Twitter" class="project-image">
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                        <h3>MACHINE LEARNING</h3>
+                        <p>Saya membuat Machine Learning untuk menghitung akurasi berapa banyak kasus anak yang terkena
+                            stunting di Temanggung
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Google Collab</span>
                         </div>
-                </div>
-                <h3>Analisis Sentimen Twitter</h3>
-                <p>Menganalisis sentimen tweet tentang topik tertentu menggunakan Natural Language Processing (NLP).</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>NLTK</span>
-                    <span>Pandas</span>
+                    </div>
+
                 </div>
             </div>
+        </section>
+        <section id="certificates">
+            <div class="container">
+                <h2 class="section-title hidden">SERTIFIKAT SAYA</h2>
+                <div class="projects-grid">
 
-            <div class="project-card hidden" data-tilt>
-                <img src="gambar_portofolio_web.jpg" alt="Screenshot Website Portofolio Interaktif" class="project-image">
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        </div>
-                </div>
-                <h3>Website Portofolio Interaktif</h3>
-                <p>Membangun situs web portofolio personal dengan animasi dan desain responsif.</p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
+                    <div class="project-card hidden" data-tilt>
+                        <img src="SertifBTNG.png" alt="Sertifikat Basic Training For Next Generation (BTNG)"
+                            class="project-image"
+                            onclick="openModal('SertifBTNG.png', 'Sertifikat BTNG DNCC 2025: Divisi Data Science')">
+
+                        <h3>Sertifikat Basic Training For Next Generation (BTNG)</h3>
+                        <p>Sertifikat Basic Training for Next Generation (BTNG) DNCC 2025: Menjadi peserta divisi Data
+                            Science dalam pelatihan DNCC (Dian Nuswantoro Computer Club) periode 4 Oktober - 25 Oktober
+                            2025.
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="SertifKompetensi.jpg" alt="Sertifikat Kompetensi UKK" class="project-image"
+                            onclick="openModal('SertifKompetensi.jpg', 'Sertifikat Kompetensi UKK Teknik Komputer')">
+
+                        <h3>Sertifikat Kompetensi UKK</h3>
+                        <p>Sertifikat Kelulusan UKK: Dinyatakan lulus Ujian Praktik Kejuruan Teknik Komputer dan
+                            Jaringan dari
+                            SMK Walisongo Semarang, 19 Februari 2025 oleh Asosiasi Profesi Telekomunikasi dan
+                            Informatika
+                            Indonesia (APOI).
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="NilaiKompetensi.jpg" alt="Nilai Uji Kompetensi Kejuruan (UKK)" class="project-image"
+                            onclick="openModal('NilaiKompetensi.jpg', 'Nilai Uji Kompetensi Jaringan (APOI) - Nilai 97')">
+
+                        <h3>Nilai Uji Kompetensi Kejuruan (UKK)</h3>
+                        <p>Daftar Kompetensi Jaringan (APOI): Meraih nilai 97 dalam Uji Kompetensi Keahlian (UKK)
+                            Rancang
+                            Bangun Keamanan Jaringan, Instalasi dan Konfigurasi Routing.
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="SertifPkl.jpg" alt="Sertifikat Praktik Kerja Lapangan (PKL) Telkom"
+                            class="project-image"
+                            onclick="openModal('SertifPkl.jpg', 'Sertifikat PKL PT Telkom Akses (Kompeten)')">
+
+                        <h3>Sertifikat Praktik Kerja Lapangan (PKL)</h3>
+                        <p>Sertifikat PKL PT Telkom: Menyelesaikan Praktik Kerja Lapangan (PKL) di PT Telkom Akses
+                            Semarang
+                            dengan hasil Kompeten (periode 1 Januari s.d 31 April 2024).
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="Telkom.jpg" alt="Surat Keterangan PKL Telkom" class="project-image"
+                            onclick="openModal('Telkom.jpg', 'Surat Keterangan PKL Telkom Akses')">
+
+                        <h3>Surat Keterangan PKL</h3>
+                        <p>Surat Keterangan PKL Telkom Akses: Bukti telah melaksanakan Praktik Kerja Industri (Prakerin)
+                            di PT
+                            Telkom Akses dari 4 Januari hingga 30 April 2024.
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="SertifSD1.jpg" alt="Sertifikat Komputer Microsoft Office" class="project-image"
+                            onclick="openModal('SertifSD1.jpg', 'Sertifikat Paket Windows & Microsoft Office - Istimewa')">
+
+                        <h3>Sertifikat Komputer (SD)</h3>
+                        <p>Sertifikat Paket Windows, Microsoft Office: Lulus ujian Paket Windows dan Microsoft Office
+                            dengan
+                            predikat Istimewa dari Sabar Parade Wedya (21 Maret 2019).
+                        </p>
+                    </div>
+
+                    <div class="project-card hidden" data-tilt>
+                        <img src="SertifSD2.jpg" alt="Sertifikat Bahasa Inggris" class="project-image"
+                            onclick="openModal('SertifSD2.jpg', 'Sertifikat General English - Basic (Excellent)')">
+
+                        <h3>Sertifikat Bahasa Inggris (SD)</h3>
+                        <p>Sertifikat General English - Basic: Menyelesaikan kursus Bahasa Inggris dari Sabar Parade
+                            Wedya
+                            dengan Grade Excellent (Sangat Baik) (Tahun 2019).
+                        </p>
+                    </div>
+
                 </div>
             </div>
+        </section>
 
-            <div class="project-card hidden" data-tilt>
-                <img src="gambar_prediksi_harga.jpg" alt="Screenshot Prediksi Harga Rumah" class="project-image">
-                <div class="project-header">
-                    <i class="far fa-folder"></i>
-                    <div class="project-links">
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
-                        </div>
-                </div>
-                <h3>Prediksi Harga Rumah</h3>
-                <p>Menerapkan model Machine Learning untuk memprediksi harga rumah berdasarkan berbagai fitur.</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Scikit-learn</span>
-                    <span>Jupyter</span>
-                </div>
-            </div>
-
+        <div id="imageModal" class="modal" onclick="closeModal()">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div id="caption"></div>
         </div>
-    </div>
-</section>
-
-
+        <a id="to-top-btn" href="#hero"><i class="fas fa-chevron-up"></i></a>
 
         <script src="biodata.js"></script>
 
