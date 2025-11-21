@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const preloader = document.getElementById('preloader');
     window.addEventListener('load', () => {
@@ -203,4 +205,20 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     });
+});
+
+const music = document.getElementById("backgroundMusic");
+const button = document.getElementById("musicButton");
+const text = button.querySelector(".text");
+
+button.addEventListener("click", () => {
+    if (music.paused) {
+        music.play();
+        button.classList.add("active");
+        text.textContent = "Pause Music";
+    } else {
+        music.pause();
+        button.classList.remove("active");
+        text.textContent = "Play Music";
+    }
 });

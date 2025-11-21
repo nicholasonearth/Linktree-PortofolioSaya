@@ -1,3 +1,59 @@
+.music-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+#musicButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 14px 22px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: 0.35s ease;
+}
+
+#musicButton:hover {
+    transform: translateY(-4px) scale(1.05);
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.music-icon {
+    width: 18px;
+    height: 18px;
+    opacity: 0.85;
+    transition: 0.3s ease;
+}
+
+#musicButton.active {
+    background: rgba(0, 255, 120, 0.20);
+    border-color: rgba(0, 255, 120, 0.5);
+    box-shadow: 0 12px 35px rgba(0, 255, 120, 0.4);
+}
+
+#musicButton.active .music-icon {
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.25); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+
 :root {
     --primary-color: #00CFE8;
     --secondary-color: #172A45;

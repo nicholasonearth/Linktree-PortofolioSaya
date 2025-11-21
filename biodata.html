@@ -18,6 +18,18 @@
 
 <body>
 
+<div class="music-container">
+    <button id="musicButton">
+        <img src="music.png" class="music-icon">
+        <span class="text">Play Music</span>
+    </button>
+</div>
+
+<audio id="backgroundMusic">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
     <audio id="bg-music" autoplay loop muted>
         <source src="entry.mp3" type="audio/mp3">
     </audio>
@@ -353,7 +365,6 @@
                 isPlaying = !isPlaying;
             });
         </script>
-
 
 </body>
 
