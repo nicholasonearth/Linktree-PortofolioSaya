@@ -17,6 +17,12 @@
 </head>
 
 <body>
+
+    <audio id="bg-music" autoplay loop muted>
+        <source src="entry.mp3" type="audio/mp3">
+    </audio>
+
+
     <div id="preloader">
         <div class="spinner"></div>
     </div>
@@ -25,40 +31,40 @@
     <div class="cursor-outline"></div>
 
     <header class="main-header">
-    <div class="container">
-        <nav class="main-nav">
-            <ul class="nav-links">
-                <li><a href="#hero">Beranda</a></li>
-                <li><a href="#experience">Pengalaman</a></li>
-                <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#projects">Proyek</a></li>
-                <li><a href="#certificates">Sertifikat</a></li>
-                
-                <li>
-                    <div class="theme-switch-wrapper-mobile">
-                        <span>Mode Gelap</span>
-                        <label class="theme-switch" for="checkbox-mobile">
-                            <input type="checkbox" id="checkbox-mobile" />
-                            <div class="slider round"></div>
-                        </label>
-                    </div>
-                </li>
-            </ul>
-            
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox-desktop">
-                    <input type="checkbox" id="checkbox-desktop" />
-                    <div class="slider round"></div>
-                </label>
-            </div>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </div>
-</header>
+        <div class="container">
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#hero">Beranda</a></li>
+                    <li><a href="#experience">Pengalaman</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#certificates">Sertifikat</a></li>
+
+                    <li>
+                        <div class="theme-switch-wrapper-mobile">
+                            <span>Mode Gelap</span>
+                            <label class="theme-switch" for="checkbox-mobile">
+                                <input type="checkbox" id="checkbox-mobile" />
+                                <div class="slider round"></div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox-desktop">
+                        <input type="checkbox" id="checkbox-desktop" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <main>
         <section id="hero">
@@ -313,6 +319,41 @@
         <a id="to-top-btn" href="#hero"><i class="fas fa-chevron-up"></i></a>
 
         <script src="biodata.js"></script>
+
+        <script>
+            document.addEventListener("click", function () {
+                var audio = document.getElementById("bg-music");
+                audio.muted = false;
+                audio.play();
+            });
+        </script>
+
+        <script>
+            const audio = document.getElementById("bg-music");
+            const toggleBtn = document.getElementById("music-toggle");
+
+            let isPlaying = false;
+
+            document.addEventListener("click", function playMusicOnce() {
+                audio.muted = false;
+                audio.play();
+                isPlaying = true;
+                toggleBtn.textContent = "Music Off";
+                document.removeEventListener("click", playMusicOnce);
+            });
+
+            toggleBtn.addEventListener("click", function () {
+                if (isPlaying) {
+                    audio.pause();
+                    toggleBtn.textContent = "Music On";
+                } else {
+                    audio.play();
+                    toggleBtn.textContent = "Music Off";
+                }
+                isPlaying = !isPlaying;
+            });
+        </script>
+
 
 </body>
 
