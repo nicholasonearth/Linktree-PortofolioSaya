@@ -40,9 +40,9 @@
 }
 
 #musicButton.active {
-    background: rgba(0, 255, 120, 0.20);
-    border-color: rgba(0, 255, 120, 0.5);
-    box-shadow: 0 12px 35px rgba(0, 255, 120, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: #00CFE8;
+    box-shadow: 0 12px 35px #00CFE8;
 }
 
 #musicButton.active .music-icon {
