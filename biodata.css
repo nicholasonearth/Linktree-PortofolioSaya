@@ -985,17 +985,21 @@ body.dark-mode .main-footer {
         backdrop-filter: blur(20px);
         border: 1px solid var(--glass-border);
         width: 90%;
-        left: 5%;
         border-radius: 20px;
         text-align: center;
         transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: var(--shadow);
         padding: 2rem 0;
+        z-index: 1000;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .nav-links.active {
         left: 5%;
         transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
     }
 
     .nav-links li {

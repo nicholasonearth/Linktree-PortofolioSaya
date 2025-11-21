@@ -29,15 +29,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-    hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        navLinks.classList.toggle("active");
-    });
-    document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
-        hamburger.classList.remove("active");
-        navLinks.classList.remove("active");
-    }));
+const navLinks = document.querySelector(".nav-links");
+
+console.log("Hamburger element:", hamburger);
+console.log("Nav links element:", navLinks);
+
+hamburger.addEventListener("click", () => {
+    console.log("Hamburger clicked!");
+    hamburger.classList.toggle("active");
+    navLinks.classList.toggle("active");
+    console.log("Hamburger active:", hamburger.classList.contains("active"));
+    console.log("Nav links active:", navLinks.classList.contains("active"));
+});
+
+document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("click", () => {
+    console.log("Nav link clicked, closing menu");
+    hamburger.classList.remove("active");
+    navLinks.classList.remove("active");
+}));
 
 
     const themeSwitchDesktop = document.getElementById('checkbox-desktop');
