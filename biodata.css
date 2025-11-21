@@ -477,6 +477,21 @@ input:checked+.slider:before {
     box-shadow: 0 8px 25px rgba(0, 207, 232, 0.3);
 }
 
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: #fff;
+    border: 2px solid transparent;
+    margin-left: 1rem;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128C7E, #25D366);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+    color: #fff;
+}
+
 .timeline {
     position: relative;
     max-width: 750px;
@@ -555,6 +570,241 @@ body.dark-mode .timeline-content {
 .timeline-content span {
     font-size: 0.8rem;
     opacity: 0.7;
+}
+
+/* Timeline Modern Styles */
+.timeline-icon {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 207, 232, 0.3);
+    z-index: 2;
+}
+
+.timeline-details {
+    margin: 1rem 0;
+}
+
+.education-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.education-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.education-item i {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-right: 1rem;
+    width: 24px;
+    text-align: center;
+}
+
+.education-item div {
+    flex: 1;
+}
+
+.education-item strong {
+    display: block;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
+
+.education-item span {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    opacity: 0.9;
+}
+
+.achievement-badge {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.achievement-badge i {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.organization-section {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.organization-section h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.org-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.org-badge {
+    background: rgba(0, 207, 232, 0.1);
+    color: var(--primary-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(0, 207, 232, 0.3);
+    transition: var(--transition);
+}
+
+.org-badge:hover {
+    background: rgba(0, 207, 232, 0.2);
+    transform: translateY(-2px);
+}
+
+.org-badge i {
+    margin-right: 0.4rem;
+    font-size: 0.9rem;
+}
+
+.experience-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.experience-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 207, 232, 0.15);
+}
+
+.company-logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.experience-details {
+    flex: 1;
+}
+
+.experience-details strong {
+    display: block;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+
+.date {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.job-desc {
+    color: var(--text-color);
+    font-size: 0.85rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    margin: 0;
+}
+
+.job-desc i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .education-item {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .education-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .experience-item {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+body.dark-mode .experience-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .organization-section {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .timeline-icon {
+        left: 15px;
+        transform: none;
+    }
+    
+    .education-item {
+        padding: 0.6rem;
+    }
+    
+    .experience-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .company-logo {
+        margin-right: 0;
+        margin-bottom: 0.8rem;
+        align-self: center;
+    }
+    
+    .org-items {
+        justify-content: center;
+    }
 }
 
 #skills {
