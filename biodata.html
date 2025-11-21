@@ -82,6 +82,16 @@
         <section id="hero">
             <div class="container">
                 <div class="hero-content hidden">
+                    <div class="profile-photo-container">
+                        <div class="profile-photo">
+                            <img src="fotoFormal.jpg " alt="Nicholas Devin Daniardi" class="profile-img" id="profileImage">
+                        </div>
+                        <div class="profile-badge">
+                            <i class="fas fa-medal"></i>
+                            <span>What if it fails... but what if it succeeds?</span>
+                        </div>
+                    </div>
+                    
                     <h1>Hai, nama saya</h1>
                     <h2>Nicholas Devin Daniardi.</h2>
                     <h3>Saya mahasiswa <span class="typing-text"></span></h3>
@@ -355,7 +365,45 @@
             });
         </script>
 
-
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p class="section-subtitle">Mari berkolaborasi dan berbicara tentang proyek Anda</p>
+                
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Nama Lengkap" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Anda" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subjek" required>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Pesan Anda" rows="5" required></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Kirim Pesan</span>
+                        <div class="btn-loader"></div>
+                    </button>
+                    
+                    <div id="formSuccess" class="form-success">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Pesan berhasil dikirim! Saya akan membalas segera.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
 
 </body>
 
