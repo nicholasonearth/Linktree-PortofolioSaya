@@ -340,14 +340,12 @@
 
             musicBtn.addEventListener("click", () => {
                 if (!musicPlaying) {
-                    // PLAY
                     audio.muted = false;
                     audio.play();
                     musicBtn.classList.add("active");
                     musicBtn.innerHTML = "🔊 Music On";
                     musicPlaying = true;
                 } else {
-                    // STOP (berhenti total)
                     audio.pause();
                     audio.currentTime = 0;
                     musicBtn.classList.remove("active");
