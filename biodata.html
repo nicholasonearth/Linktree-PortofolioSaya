@@ -18,19 +18,19 @@
 
 <body>
 
-<div class="music-container">
-    <button id="musicButton">
-        <img src="music.png" class="music-icon">
-        <span class="text">Play Music</span>
-    </button>
-</div>
+    <div class="music-container">
+        <button id="musicButton">
+            <img src="music.png" class="music-icon">
+            <span class="text">Play Music</span>
+        </button>
+    </div>
 
-<audio id="backgroundMusic">
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
+    <audio id="backgroundMusic">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
 
-    <audio id="bg-music" autoplay loop muted>
+    <audio id="bg-music" autoplay>
         <source src="entry.mp3" type="audio/mp3">
     </audio>
 
@@ -333,38 +333,31 @@
         <script src="biodata.js"></script>
 
         <script>
-            document.addEventListener("click", function () {
-                var audio = document.getElementById("bg-music");
-                audio.muted = false;
-                audio.play();
-            });
-        </script>
-
-        <script>
             const audio = document.getElementById("bg-music");
-            const toggleBtn = document.getElementById("music-toggle");
+            const musicBtn = document.getElementById("musicButton");
 
-            let isPlaying = false;
+            let musicPlaying = false;
 
-            document.addEventListener("click", function playMusicOnce() {
-                audio.muted = false;
-                audio.play();
-                isPlaying = true;
-                toggleBtn.textContent = "Music Off";
-                document.removeEventListener("click", playMusicOnce);
-            });
-
-            toggleBtn.addEventListener("click", function () {
-                if (isPlaying) {
-                    audio.pause();
-                    toggleBtn.textContent = "Music On";
-                } else {
+            musicBtn.addEventListener("click", () => {
+                if (!musicPlaying) {
+                    // PLAY
+                    audio.muted = false;
                     audio.play();
-                    toggleBtn.textContent = "Music Off";
+                    musicBtn.classList.add("active");
+                    musicBtn.innerHTML = "🔊 Music On";
+                    musicPlaying = true;
+                } else {
+                    // STOP (berhenti total)
+                    audio.pause();
+                    audio.currentTime = 0;
+                    musicBtn.classList.remove("active");
+                    musicBtn.innerHTML = "🎵 Music Off";
+                    musicPlaying = false;
                 }
-                isPlaying = !isPlaying;
             });
         </script>
+
+
 
 </body>
 
