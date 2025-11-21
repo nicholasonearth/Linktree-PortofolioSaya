@@ -215,7 +215,6 @@ button.addEventListener("click", () => {
     if (music.paused) {
         music.play();
         button.classList.add("active");
-        text.textContent = "Pause Music";
     } else {
         music.pause();
         button.classList.remove("active");
