@@ -1021,6 +1021,20 @@ body.dark-mode .main-footer {
         transform: translateX(10px);
     }
 
+    body.dark-mode .nav-links {
+        background: var(--background-dark);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body.dark-mode .nav-links a {
+        color: var(--text-dark);
+    }
+
+    body.dark-mode .nav-links a:hover {
+        background: rgba(0, 207, 232, 0.2);
+        color: var(--primary-color);
+    }
+
     .main-header .theme-switch-wrapper {
         display: none;
     }
