@@ -780,7 +780,7 @@ body.dark-mode .organization-section {
     border-top-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments untuk timeline */
 @media (max-width: 768px) {
     .timeline-icon {
         left: 15px;
@@ -789,21 +789,80 @@ body.dark-mode .organization-section {
     
     .education-item {
         padding: 0.6rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .education-item i {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
     }
     
     .experience-item {
         flex-direction: column;
         text-align: center;
+        padding: 0.8rem;
     }
     
     .company-logo {
         margin-right: 0;
         margin-bottom: 0.8rem;
         align-self: center;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
     }
     
     .org-items {
         justify-content: center;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .org-badge {
+        justify-content: center;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+    }
+    
+    .achievement-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .achievement-badge i {
+        margin-right: 0;
+        margin-bottom: 0.3rem;
+        font-size: 0.9rem;
+    }
+    
+    .timeline-content h3 {
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 0.8rem;
+    }
+    
+    .timeline-details {
+        margin: 0.5rem 0;
+    }
+    
+    .organization-section h4 {
+        text-align: center;
+        font-size: 0.8rem;
+    }
+    
+    .job-desc {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .date {
+        font-size: 0.7rem;
     }
 }
 
