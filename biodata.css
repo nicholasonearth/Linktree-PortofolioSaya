@@ -1453,7 +1453,6 @@ body.dark-mode .main-footer {
     }
 }
 
-/* Contact Section Styles */
 .contact-section {
     padding: 80px 0;
     background: linear-gradient(135deg, var(--background-light) 0%, var(--card-light) 100%);
@@ -1597,7 +1596,6 @@ body.dark-mode .contact-form textarea {
     margin: 0;
 }
 
-/* Loading state */
 .contact-form.loading .btn-text {
     opacity: 0;
 }
@@ -1606,7 +1604,6 @@ body.dark-mode .contact-form textarea {
     display: block;
 }
 
-/* Responsive design for contact form */
 @media (max-width: 768px) {
     .contact-form {
         padding: 1.5rem;
@@ -1618,7 +1615,6 @@ body.dark-mode .contact-form textarea {
     }
 }
 
-/* Profile Photo Styles */
 .profile-photo-container {
     display: flex;
     flex-direction: column;
@@ -1690,7 +1686,6 @@ body.dark-mode .profile-img {
     font-size: 1rem;
 }
 
-/* Photo Upload Preview */
 .photo-preview-container {
     position: fixed;
     top: 0;
@@ -1732,7 +1727,6 @@ body.dark-mode .photo-preview-content {
     justify-content: center;
 }
 
-/* Responsive design for profile photo */
 @media (max-width: 768px) {
     .profile-photo {
         width: 150px;
@@ -1751,5 +1745,48 @@ body.dark-mode .photo-preview-content {
     .photo-preview-img {
         width: 150px;
         height: 150px;
+    }
+}
+
+.hero-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+
+    z-index: -2;          
+    pointer-events: none; 
+    opacity: 0.35;        
+    filter: brightness(0.9) contrast(1.05);
+}
+
+#hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.35),
+        rgba(0, 0, 0, 0.15)
+    );
+    z-index: -1;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+body.dark-mode .hero-bg-video {
+    opacity: 0.25;
+    filter: brightness(0.8) contrast(1.1);
+}
+
+@media (max-width: 768px) {
+    .hero-bg-video {
+        opacity: 0.25;
     }
 }

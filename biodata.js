@@ -72,7 +72,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         }
         switches.forEach(s => s.checked = isDarkMode);
         
-        // Smooth transition effect
         document.body.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         setTimeout(() => {
             document.body.style.transition = '';
@@ -84,7 +83,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
             const isDarkMode = themeSwitch.checked;
             updateTheme(isDarkMode);
             
-            // Add ripple effect
             const ripple = document.createElement('span');
             ripple.classList.add('ripple');
             themeSwitch.parentElement.appendChild(ripple);
@@ -97,7 +95,7 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         const isDarkMode = currentTheme === 'dark';
         updateTheme(isDarkMode);
     } else {
-        // Default to system preference
+
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         updateTheme(prefersDark);
     }
@@ -131,18 +129,17 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         
         if (isDeleting) {
             typingText.textContent = currentWord.substring(0, charIndex--);
-            typeSpeed = 50; // Faster when deleting
+            typeSpeed = 50; 
         } else {
             typingText.textContent = currentWord.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = charIndex % 3 === 0 ? 150 : 100; // Variable speed for natural feel
+            typeSpeed = charIndex % 3 === 0 ? 150 : 100; 
         }
 
-        // Add cursor blink effect
         typingText.style.borderRight = isDeleting ? '2px solid transparent' : '2px solid var(--primary-color)';
 
         if (!isDeleting && charIndex === currentWord.length) {
-            typeSpeed = 2000; // Pause at end
+            typeSpeed = 2000; 
             setTimeout(() => {
                 isDeleting = true;
                 typeSpeed = 50;
@@ -154,16 +151,15 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            typeSpeed = 500; // Pause before next word
+            typeSpeed = 500;
         }
 
         setTimeout(type, typeSpeed);
     }
     
     if (typingText) {
-        // Add initial cursor
         typingText.style.borderRight = '2px solid var(--primary-color)';
-        setTimeout(type, 1000); // Start after 1 second
+        setTimeout(type, 1000); 
     }
 
     const tiltElements = document.querySelectorAll("[data-tilt]");
@@ -248,9 +244,7 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         }
     };
 
-    // Smooth Scroll Behavior
     function initSmoothScroll() {
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -267,13 +261,11 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
                         behavior: 'smooth'
                     });
                     
-                    // Update URL hash without jumping
                     history.pushState(null, null, targetId);
                 }
             });
         });
 
-        // Enhanced smooth scroll for "Back to Top" button
         const toTopBtn = document.getElementById("to-top-btn");
         if (toTopBtn) {
             toTopBtn.onclick = function (e) {
@@ -285,7 +277,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
             };
         }
 
-        // Add smooth scroll to any element with data-scroll attribute
         document.querySelectorAll('[data-scroll]').forEach(element => {
             element.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -304,10 +295,8 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         });
     }
 
-    // Initialize smooth scroll
     initSmoothScroll();
 
-    // Particle Background Effect
     function createParticles() {
         const particlesContainer = document.createElement('div');
         particlesContainer.className = 'particles';
@@ -337,13 +326,11 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
                 opacity: 0.6;
             `;
 
-            // Random position
             const x = Math.random() * 100;
             const y = Math.random() * 100;
             particle.style.left = `${x}%`;
             particle.style.top = `${y}%`;
 
-            // Random animation
             const duration = 20 + Math.random() * 30;
             const delay = Math.random() * 5;
             particle.style.animation = `
@@ -354,7 +341,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
             particles.push(particle);
         }
 
-        // Add CSS for animation
         const style = document.createElement('style');
         style.textContent = `
             @keyframes floatParticle {
@@ -379,10 +365,8 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         document.head.appendChild(style);
     }
 
-    // Initialize particles
     createParticles();
 
-    // Scroll Progress Indicator
     function createScrollProgress() {
         const progressBar = document.createElement('div');
         progressBar.className = 'scroll-progress';
@@ -408,7 +392,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
 
     createScrollProgress();
 
-    // Contact Form Validation and Submission
     function initContactForm() {
         const contactForm = document.getElementById('contactForm');
         if (!contactForm) return;
@@ -419,7 +402,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         const messageInput = document.getElementById('message');
         const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-        // Validation functions
         function validateName(name) {
             if (!name.trim()) {
                 return 'Nama wajib diisi';
@@ -482,7 +464,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
             }
         }
 
-        // Real-time validation
         nameInput.addEventListener('input', () => {
             const error = validateName(nameInput.value);
             if (error) {
@@ -519,11 +500,9 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
             }
         });
 
-        // Form submission
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            // Validate all fields
             const nameError = validateName(nameInput.value);
             const emailError = validateEmail(emailInput.value);
             const subjectError = validateSubject(subjectInput.value);
@@ -538,24 +517,19 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
                 return;
             }
 
-            // Show loading state
             contactForm.classList.add('loading');
             submitBtn.disabled = true;
 
             try {
-                // Simulate form submission (replace with actual API call)
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
-                // Show success message
                 const successElement = document.getElementById('formSuccess');
                 if (successElement) {
                     successElement.style.display = 'block';
                 }
 
-                // Reset form
                 contactForm.reset();
                 
-                // Hide success message after 5 seconds
                 setTimeout(() => {
                     if (successElement) {
                         successElement.style.display = 'none';
@@ -566,13 +540,12 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
                 console.error('Form submission error:', error);
                 alert('Terjadi kesalahan saat mengirim pesan. Silakan coba lagi.');
             } finally {
-                // Remove loading state
+
                 contactForm.classList.remove('loading');
                 submitBtn.disabled = false;
             }
         });
 
-        // Clear errors on focus
         const inputs = [nameInput, emailInput, subjectInput, messageInput];
         inputs.forEach(input => {
             input.addEventListener('focus', () => {
@@ -581,7 +554,6 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
         });
     }
 
-    // Initialize contact form
     initContactForm();
 
     document.addEventListener('keydown', function(event) {
@@ -605,3 +577,19 @@ button.addEventListener("click", () => {
         text.textContent = "Play Music";
     }
 });
+
+const heroVideo = document.querySelector(".hero-bg-video");
+
+if (heroVideo) {
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            heroVideo.pause();
+        } else {
+            heroVideo.play().catch(() => {});
+        }
+    });
+
+    if (navigator.connection && navigator.connection.saveData) {
+        heroVideo.pause();
+    }
+}
