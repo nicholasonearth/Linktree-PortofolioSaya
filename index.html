@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicholas Devin - Professional Portfolio</title>
+    <title>Nicholas Devin | Connect</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
-    <div class="particles-container" id="particles"></div>
-    
+
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+
     <div class="container">
-        <div class="hero-section">
-            <div class="profile-card">
-                <div class="profile-image-container">
-                    <img src="fotoFormal.jpg" alt="Nicholas Devin" class="profile-image">
-                    <div class="image-overlay"></div>
-                </div>
-                
-                <div class="profile-content">
-                    <h1 class="name-title">Nicholas Devin Daniardi</h1>
-                    <p class="professional-title">"Nothing is impossible for him who will try"</p>
-                    <div class="specialization-tags">
-                        <span class="tag">Machine Learning</span>
-                        <span class="tag">Data Science</span>
+        <div class="glass-card" id="tiltCard">
+            <div class="card-content">
+
+                <div class="profile-header">
+                    <div class="img-wrapper">
+                        <img src="fotoFormal.jpg" alt="Nicholas Devin" class="profile-img">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <h1>Nicholas Devin</h1>
+                    <p class="tagline">Data Science Student & Developer</p>
+                    <div class="tags">
+                        <span><i class="fas fa-code"></i> AI/ML</span>
+                        <span><i class="fas fa-basketball-ball"></i> Basket</span>
                     </div>
                 </div>
+
+                <a href="biodata.html" class="link-btn main-btn">
+                    <div class="btn-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="btn-text">
+                        <span>Buka Portfolio Utama</span>
+                        <small>Lihat Project & Pengalaman Lengkap</small>
+                    </div>
+                    <i class="fas fa-arrow-right arrow-indicator"></i>
+                </a>
+
+                <div class="divider"><span>Socials & Code</span></div>
+
+                <div class="links-grid">
+                    <a href="https://www.instagram.com/nicholasonearth/" target="_blank" class="link-btn secondary-btn">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.tiktok.com/@nichonearth_" target="_blank" class="link-btn secondary-btn">
+                        <i class="fab fa-tiktok"></i> TikTok
+                        <a href="https://github.com/nicholasonearth" target="_blank" class="link-btn secondary-btn">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://www.linkedin.com/in/nicholasdevin" target="_blank"
+                            class="link-btn secondary-btn">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                </div>
+
             </div>
-
-        <div class="navigation-grid">
-            <a href="https://github.com/nicholasonearth" target="_blank" rel="noopener noreferrer" class="nav-card github-card">
-                <div class="card-icon">
-                    <i class="fab fa-github"></i>
-                </div>
-                <h3>GitHub</h3>
-                <div class="card-hover-effect"></div>
-            </a>
-
-            <a href="biodata.html" class="nav-card portfolio-card">
-                <div class="card-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <h3>Portfolio</h3>
-                <div class="card-hover-effect"></div>
-            </a>
-
-            <a href="https://www.instagram.com/nicholasonearth/" target="_blank" rel="noopener noreferrer" class="nav-card instagram-card">
-                <div class="card-icon">
-                    <i class="fab fa-instagram"></i>
-                </div>
-                <h3>Instagram</h3>
-                <div class="card-hover-effect"></div>
-            </a>
+        </div>
+    </div>
 
     <script src="index.js"></script>
 </body>
+
 </html>
