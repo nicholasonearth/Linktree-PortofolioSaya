@@ -118,7 +118,7 @@ document.querySelectorAll(".nav-links li a").forEach(n => n.addEventListener("cl
     hiddenElements.forEach((el) => observer.observe(el));
 
     const typingText = document.querySelector('.typing-text');
-    const words = ["UDINUS.", "FAKULTAS ILMU KOMPUTER", "PROGRAM STUDI TEKNIK INFORMATIKA"];
+    const words = ["UDINUS.", "TI"];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
