@@ -576,9 +576,9 @@ button.addEventListener("click", () => {
         button.classList.remove("active");
         text.textContent = "Play Music";
     }
-});
+    });
 
-const heroVideo = document.querySelector(".hero-bg-video");
+    const heroVideo = document.querySelector(".hero-bg-video");
 
 if (heroVideo) {
     document.addEventListener("visibilitychange", () => {
